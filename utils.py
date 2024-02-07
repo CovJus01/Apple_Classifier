@@ -43,6 +43,5 @@ def zScoreNormilization(X):
     return normalized_x, mean, deviation
 
 
-X,Y = importData("./apple_quality.csv")
-X, means, deviations = zScoreNormilization(X)
+
 
