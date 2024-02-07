@@ -43,5 +43,15 @@ def zScoreNormilization(X):
     return normalized_x, mean, deviation
 
 
+def checkAccuracy(predicted, expected):
+    count = 0
+    array_size = len(predicted)
 
+    for i in range(array_size):
+        if(int(predicted[i, 0]) == int(expected[i])):
+            count += 1
+    correct = count
+    incorrect = array_size-count
+    accuracy = correct/array_size*100
+    return correct, incorrect, accuracy
 

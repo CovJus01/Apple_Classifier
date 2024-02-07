@@ -21,23 +21,18 @@ model = tf.keras.Sequential([
 model.summary()
 model.compile(
     loss=tf.keras.losses.BinaryCrossentropy(),
-    optimizer=tf.keras.optimizers.Adam(0.01),
+    optimizer=tf.keras.optimizers.Adam(0.003),
 )
 
 model.fit(
   X[:3500],
   Y[:3500],
-  epochs=50
+  epochs=100
 )
 
 
-
+#Predict and check prediction accuracy
 predict = model.predict(X[3500:4000].reshape((-1,7)))
 predict = (predict >= 0.5).astype(int)
-count = 0
-for i in range(0,500):
-    if(int(predict[i, 0]) == int(Y[i+3500])):
-        count += 1
-    print(f"Prediction: {predict[i, 0]} Actual: {int(Y[i+3500])}")
-
-print(f"Accuracy: {count}/500 {float(count)/5.0}%")
+correct, incorrect, accuracy = utils.checkAccuracy(predict, Y[3500:4000])
+print(f"Accuracy: {correct}/500 {accuracy}%")
