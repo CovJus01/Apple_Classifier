@@ -1,2 +1,2 @@
-# Egg_Classifier
-Machine learns to classify eggs as broken or unbroken
+# Apple_Classifier
+Machine learns to classify apples as good or bad quality
