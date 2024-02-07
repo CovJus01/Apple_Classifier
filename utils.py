@@ -33,6 +33,16 @@ def importData(filepath):
     Y = Y.reshape((-1,1))
     return X,Y
 
-X,Y = importData("./apple_quality.csv")
 
+def zScoreNormilization(X):
+    mean = np.mean(X, axis = 0)
+    deviation = np.std(X, axis = 0)
+
+    normalized_x = (X - mean)/deviation
+
+    return normalized_x, mean, deviation
+
+
+X,Y = importData("./apple_quality.csv")
+X, means, deviations = zScoreNormilization(X)
 
